@@ -1,0 +1,11 @@
+#backend ignoring file
+*.pyc
+db.sqlite3
+**/__pycache__
+
+
+#frontend ignoring files
+.coverage
+.DS_Store
+.env
+*.swp
