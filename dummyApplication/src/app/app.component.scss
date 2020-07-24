@@ -1,0 +1,17 @@
+.notification-icon{
+  position: relative;
+  text-align: right;
+  right: 20px;
+}
+
+.notification-box{
+  position: absolute;
+  right: 0;
+  border: 1px solid;
+  text-align: center;
+  min-width: 200px;
+  max-height: 200px;
+  z-index: 111;
+  padding: 10px;
+  overflow: auto;
+}

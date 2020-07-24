@@ -1,0 +1,33 @@
+<p>Posts</p>
+
+<div *ngFor="let post of posts">
+  <div>
+    <span>{{post.content}}</span>
+  </div>
+</div>
+
+<span (click)="openPostModal(addPostModal)">Add Post</span>
+
+<ng-template #addPostModal let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title inline">Add Post</h4>
+    <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="m-b-sm">
+      <label class="font-bold">Content:</label>
+      <input
+        type='text'
+        name="content"
+        [(ngModel)]="newPost.content"
+        placeholder="Enter content"
+      />
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="submit" class="btn bg-indigo-300" (click)="addPost()">Add</button>
+    <button type="button" class="btn btn-outline-dark" (click)="closeModal()">Cancel</button>
+  </div>
+</ng-template>

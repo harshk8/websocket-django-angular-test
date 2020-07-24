@@ -1,0 +1,62 @@
+<div class="notification-icon" (click)="isShowNotificationPopup = !isShowNotificationPopup">
+  <img src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-bell-512.png" alt="Notifications" width="50" height="50"/>
+  <span>{{notifications.length}}</span>
+  <div class="notification-box" *ngIf="isShowNotificationPopup">
+    <app-notifications [notifications]="notifications"></app-notifications>
+  </div>
+</div>
+<div *ngIf="getAuthService().isAuthenticated()" (click)="logout()">Logout</div>
+<div *ngIf="!getAuthService().isAuthenticated() && !isRegister">
+  <div class="modal-title h5">Log in</div>
+  <form (ngSubmit)="login()" class="form-horizontal">
+    <div class="form-group">
+      <input class="form-input" type="text" [(ngModel)]="model.username" name="username" placeholder="Username or email address">
+    </div>
+    <div class="form-group password-box">
+      <input
+        class="form-input"
+        type='password'
+        name="password"
+        [(ngModel)]="model.password"
+        placeholder="Password"
+      >
+    </div>
+    <div class="submit">
+      <button class="btn btn-primary btn-lg">Log in</button>
+    </div>
+    <span (click)="isRegister = !isRegister">Sign up</span>
+  </form>
+</div>
+
+<div  *ngIf="!getAuthService().isAuthenticated() && isRegister">
+<div class="modal-title h5">Registration</div>
+<form (ngSubmit)="registration()" class="form-horizontal">
+  <div class="form-group">
+    <input class="form-input" type="text" [(ngModel)]="user.username" name="email" placeholder="Username or email address">
+  </div>
+  <div class="form-group password-box">
+    <input
+      class="form-input"
+      type='password'
+      name="password"
+      [(ngModel)]="user.password"
+      placeholder="Password"
+    >
+  </div>
+  <div class="form-group password-box">
+    <input
+      class="form-input"
+      type='password'
+      name="confirm_password"
+      [(ngModel)]="user.confirm_password"
+      placeholder="Password Confirmation"
+    >
+  </div>
+  <div class="submit">
+    <button class="btn btn-primary btn-lg">Signup</button>
+  </div>
+  <span (click)="isRegister = !isRegister">Log in</span>
+</form>
+</div>  
+
+<router-outlet></router-outlet>

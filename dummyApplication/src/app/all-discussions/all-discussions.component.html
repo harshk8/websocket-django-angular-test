@@ -1,0 +1,34 @@
+<div *ngIf="getAuthService().isAuthenticated()" >
+  <p>all-discussions works!</p>
+  <div class='container'>
+    <div *ngFor="let discussion of discussions"> 
+      <a routerLink="/discussions/{{discussion.id}}">{{discussion.title}}</a>
+    </div>
+  </div>
+  <span (click)="openDiscussionModal(addDiscussionModal)">Add Discussion</span>
+  
+</div>
+
+<ng-template #addDiscussionModal let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title inline">Add Discussion</h4>
+    <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="m-b-sm">
+      <label class="font-bold">Title:</label>
+      <input
+        type='text'
+        name="title"
+        [(ngModel)]="newDiscussion.title"
+        placeholder="Enter title"
+      />
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="submit" class="btn bg-indigo-300" (click)="addDiscussion()">Add</button>
+    <button type="button" class="btn btn-outline-dark" (click)="closeModal()">Cancel</button>
+  </div>
+</ng-template>
